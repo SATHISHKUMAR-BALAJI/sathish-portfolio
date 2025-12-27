@@ -1,162 +1,357 @@
 "use client";
+
 import { motion } from "framer-motion";
+import { 
+  Github, 
+  Linkedin, 
+  Mail, 
+  ExternalLink, 
+  Award, 
+  Terminal, 
+  Database, 
+  Cpu, 
+  Globe,
+  BookOpen,
+  FileCheck 
+} from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
-import { Github, Linkedin, Mail } from "lucide-react";
+
+// --- Animation Variants ---
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.15 },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+};
+
+// --- Data ---
+const skills = [
+  "Python", "C++", "R", "TensorFlow", "PyTorch", "OpenCV", "YOLOv8", 
+  "NLP", "Flask", "FastAPI", "React", "PostgreSQL", "Power BI"
+];
+
+const certifications = [
+  {
+    name: "Managerial Skills for Interpersonal Dynamics",
+    issuer: "IIT Roorkee (NPTEL)",
+    year: "2025",
+    link: "https://internalapp.nptel.ac.in/NOC/NOC25/SEM2/Ecertificates/110/noc25-mg91/Course/NPTEL25MG91S55390427310828126.pdf"
+  },
+  {
+    name: "Data Analytics with Python",
+    issuer: "IIT Ropar (NPTEL)",
+    year: "2025",
+    link: "https://archive.nptel.ac.in/content/noc/NOC25/SEM1/Ecertificates/106/noc25-cs17/Course/NPTEL25CS17S74320522904291480.pdf"
+  },
+  {
+    name: "Deep Learning",
+    issuer: "IIT Ropar (NPTEL)",
+    year: "2025",
+    link: "https://archive.nptel.ac.in/content/noc/NOC25/SEM1/Ecertificates/106/noc25-cs21/Course/NPTEL25CS21S94320722604291480.pdf"
+  },
+  {
+    name: "Introduction to IoT",
+    issuer: "NPTEL",
+    year: "2024",
+    link: "https://archive.nptel.ac.in/content/noc/NOC24/SEM1/Ecertificates/106/noc24-cs35/Course/NPTEL24CS35S55340052430699333.pdf"
+  },
+  {
+    name: "Database Management Systems",
+    issuer: "NPTEL",
+    year: "2024",
+    link: "https://archive.nptel.ac.in/content/noc/NOC24/SEM2/Ecertificates/106/noc24-cs75/Course/NPTEL24CS75S13310439802742881.pdf"
+  },
+  {
+    name: "Programming in Python",
+    issuer: "SWAYAM",
+    year: "2023",
+    link: "https://drive.google.com/file/d/1HKGCC0S3w0Q1XWYkZFw0T79_R5yfU1uD/view?usp=drive_link"
+  },
+  {
+    name: "Certified Hindi Pandit",
+    issuer: "DBHPS",
+    year: "Mentorship",
+    link: "https://drive.google.com/file/d/1d40Sx_GmM5QTFteprw1LeS6eRZr343XO/view?usp=sharing"
+  }
+];
 
 export default function Portfolio() {
   return (
-    <div className="min-h-screen bg-neutral-950 text-neutral-100 px-6 py-10">
-      <div className="max-w-6xl mx-auto space-y-20">
+    <div className="min-h-screen bg-neutral-950 text-neutral-100 selection:bg-cyan-500/30">
+      {/* Background Gradient Mesh */}
+      <div className="fixed inset-0 z-0 pointer-events-none">
+        <div className="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-cyan-500/10 rounded-full blur-[120px]" />
+        <div className="absolute bottom-[-10%] right-[-10%] w-[500px] h-[500px] bg-indigo-500/10 rounded-full blur-[120px]" />
+      </div>
 
+      <motion.div 
+        className="max-w-6xl mx-auto px-6 py-20 relative z-10 space-y-24"
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+      >
+        
         {/* Hero Section */}
-        <section className="space-y-6">
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="text-4xl md:text-6xl font-bold"
-          >
+        <motion.section variants={itemVariants} className="space-y-6">
+          <div className="inline-block px-3 py-1 text-xs font-medium tracking-wider text-cyan-400 uppercase bg-cyan-400/10 rounded-full border border-cyan-400/20">
+            Portfolio 2026
+          </div>
+          <h1 className="text-5xl md:text-7xl font-bold tracking-tight bg-gradient-to-r from-white to-neutral-400 bg-clip-text text-transparent">
             Sathishkumar B
-          </motion.h1>
-          <p className="text-xl text-neutral-400 max-w-3xl">
+          </h1>
+          <p className="text-xl md:text-2xl text-neutral-400 max-w-2xl leading-relaxed">
             Artificial Intelligence & Data Science | Research • Healthcare AI • Machine Learning
           </p>
-          <div className="flex gap-6 text-neutral-300">
-            <a href="mailto:sathishkumar.balaji06@gmail.com"><Mail /></a>
-            <a href="https://linkedin.com/in/sathishkumarb06" target="_blank"><Linkedin /></a>
-            <a href="#" target="_blank"><Github /></a>
+          
+          <div className="flex gap-4 pt-4">
+            {[
+              { icon: Mail, href: "mailto:sathishkumar.balaji06@gmail.com" },
+              { icon: Linkedin, href: "https://linkedin.com/in/sathishkumarb06" },
+              { icon: Github, href: "#" }
+            ].map((social, idx) => (
+              <a 
+                key={idx}
+                href={social.href}
+                target="_blank"
+                rel="noreferrer"
+                className="p-3 bg-white/5 border border-white/10 rounded-lg hover:bg-white/10 hover:scale-105 transition-all duration-200 text-neutral-300 hover:text-white"
+              >
+                <social.icon size={24} />
+              </a>
+            ))}
           </div>
-        </section>
+        </motion.section>
 
-        {/* About */}
-        <section>
-          <h2 className="text-3xl font-semibold mb-4">About Me</h2>
-          <p className="text-neutral-300 leading-relaxed max-w-4xl">
-            AI and Data Science professional with strong experience in healthcare-focused AI systems, applied machine learning, and research-driven innovation. Seeking to contribute to high-impact, real-world problem solving by building scalable, ethical, and data-driven solutions within a collaborative, global technology environment.
-          </p>
-        </section>
-
-        {/* Research */}
-        <section>
-          <h2 className="text-3xl font-semibold mb-6">Research & Academic Contributions</h2>
-          <Card>
-            <CardContent className="p-6 space-y-2">
-              <h3 className="text-xl font-medium">CircuitNAS – ICEAI 2025</h3>
-              <p className="text-neutral-400">
-                Oral presenter at the 3rd International Conference on Evolutionary Artificial Intelligence (ICEAI 2025). The paper titled <strong>“CircuitNAS: Architecture Search for Emergent Mechanistic Interpretability via Circuit Optimization”</strong> is scheduled for publication in the Springer <em>Algorithms for Intelligent Systems</em> book series.
-              </p>
-            </CardContent>
-          </Card>
-          <p className="mt-4 text-neutral-400">Invited Reviewer – IEEE Contemporary Computing Innovations Conference (CCIC) 2026</p>
-        </section>
-
-        {/* International Program */}
-        <section>
-          <h2 className="text-3xl font-semibold mb-6">International Innovation Program</h2>
-          <Card>
-            <CardContent className="p-6">
-              <h3 className="text-xl font-medium">UK–India ALxcelerate Program (2025–26)</h3>
-              <p className="text-neutral-400 mt-2">
-                Final-stage participant in a competitive UK–India international innovation initiative supported by Infosys and The Dialogue (UK-based policy think tank). Collaborated with a cross-disciplinary international team to develop an AI-driven Infant Gut Health Analysis solution, integrating medical expertise with data-driven AI approaches.
-              </p>
-            </CardContent>
-          </Card>
-        </section>
-
-        {/* Experience */}
-        <section>
-          <h2 className="text-3xl font-semibold mb-6">Professional Experience</h2>
-          <div className="grid md:grid-cols-2 gap-6">
-            <Card>
-              <CardContent className="p-6">
-                <h3 className="text-lg font-medium">Artificial Intelligence Intern</h3>
-                <p className="text-neutral-400 text-sm">DigitalTrack Solutions Pvt Ltd | June – July 2025</p>
-                <p className="mt-2 text-neutral-300">
-                  Designed and implemented a real-time object detection and face recognition system using YOLOv8. Developed a Flask-based web application for live image and video processing with optimized inference using ONNX and embedding storage.
-                </p>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardContent className="p-6">
-                <h3 className="text-lg font-medium">Data Analyst Intern</h3>
-                <p className="text-neutral-400 text-sm">Monolith Technologies Pvt Ltd | July – August 2024</p>
-                <p className="mt-2 text-neutral-300">
-                  Analyzed electric vehicle adoption trends, charging infrastructure growth, and market dynamics using Python-based data analytics and visualization techniques.
-                </p>
-              </CardContent>
-            </Card>
+        {/* About & Stats Grid */}
+        <motion.section variants={itemVariants} className="grid md:grid-cols-3 gap-8">
+          <div className="md:col-span-2 space-y-4">
+            <h2 className="text-2xl font-semibold flex items-center gap-2">
+              <Terminal className="text-cyan-400" size={24} /> About Me
+            </h2>
+            <p className="text-neutral-400 leading-relaxed text-lg">
+              AI and Data Science professional with strong experience in healthcare-focused AI systems, applied machine learning, and research-driven innovation. Seeking to contribute to high-impact, real-world problem solving by building scalable, ethical, and data-driven solutions within a collaborative, global technology environment.
+            </p>
           </div>
-        </section>
-
-        {/* Projects */}
-        <section>
-          <h2 className="text-3xl font-semibold mb-6">Projects</h2>
-          <div className="grid md:grid-cols-2 gap-6">
-            <Card>
-              <CardContent className="p-6 space-y-2">
-                <h3 className="font-medium text-lg">MedLex</h3>
-                <p className="text-neutral-400">AI-powered hospital administration and medico-legal management system enabling secure authentication, structured medical data handling, analytics dashboards, and optimized clinical workflows.</p>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardContent className="p-6 space-y-2">
-                <h3 className="font-medium text-lg">CareIntelli</h3>
-                <p className="text-neutral-400">Next-generation AI voice assistant for healthcare that automates patient workflows, prescription digitization, and clinical documentation using NLP, OCR, and speech recognition.</p>
-              </CardContent>
-            </Card>
+          
+          {/* Tech Stack Chips */}
+          <div className="space-y-4">
+             <h2 className="text-2xl font-semibold flex items-center gap-2">
+              <Cpu className="text-cyan-400" size={24} /> Technical Skills
+            </h2>
+            <div className="flex flex-wrap gap-2">
+              {skills.map((skill) => (
+                <span 
+                  key={skill}
+                  className="px-3 py-1.5 text-sm bg-neutral-900 border border-neutral-800 rounded-md text-neutral-300 hover:border-cyan-500/50 hover:text-cyan-300 transition-colors cursor-default"
+                >
+                  {skill}
+                </span>
+              ))}
+            </div>
           </div>
-        </section>
+        </motion.section>
 
-        {/* Skills */}
-        <section>
-          <h2 className="text-3xl font-semibold mb-6">Technical Skills</h2>
-          <p className="text-neutral-300 max-w-4xl">
-            <strong>Programming:</strong> Python, C, C++, R <br />
-            <strong>AI & Data:</strong> Pandas, NumPy, scikit-learn, Matplotlib <br />
-            <strong>Web & Backend:</strong> Flask, FastAPI, HTML, CSS <br />
-            <strong>Databases:</strong> MySQL, PostgreSQL <br />
-            <strong>Tools:</strong> Power BI, VS Code, MS Office, Google Workspace
-          </p>
-        </section>
+        {/* Research & Innovation (Updated Structure) */}
+        <motion.section variants={itemVariants} className="space-y-8">
+           <h2 className="text-3xl font-semibold border-l-4 border-cyan-500 pl-4">Research & Innovation</h2>
+           <div className="grid md:grid-cols-2 gap-6">
+              
+              {/* Card 1: CircuitNAS */}
+              <Card className="bg-neutral-900/50 border-neutral-800 hover:border-cyan-500/30 transition-all duration-300 group">
+                <CardContent className="p-6">
+                  <div className="flex justify-between items-start mb-4">
+                    <h3 className="text-xl font-medium text-cyan-100">CircuitNAS – ICEAI 2025</h3>
+                    <BookOpen size={20} className="text-cyan-500" />
+                  </div>
+                  <div className="text-neutral-400 space-y-4">
+                    <p>
+                      Oral presenter for <strong>"CircuitNAS: Architecture Search for Emergent Mechanistic Interpretability"</strong>. Scheduled for publication in Springer <em>Algorithms for Intelligent Systems</em>.
+                    </p>
+                  </div>
+                </CardContent>
+              </Card>
 
-        {/* Certifications */}
-        <section>
-          <h2 className="text-3xl font-semibold mb-6">Certifications</h2>
-          <ul className="list-disc list-inside text-neutral-300 space-y-2">
-            <li>Managerial Skills for Interpersonal Dynamics – IIT Roorkee (NPTEL, 2025)</li>
-            <li>Data Analytics with Python & Deep Learning – IIT Ropar (NPTEL, 2025)</li>
-            <li>Database Management Systems – NPTEL (2024)</li>
-            <li>Introduction to IoT – NPTEL (2024)</li>
-            <li>Programming in Python – SWAYAM (2023)</li>
-            <li>Certified Hindi Pandit (DBHPS) – Mentored students for Hindi examinations for 3+ years</li>
-          </ul>
-        </section>
+              {/* Card 2: International Program */}
+              <Card className="bg-neutral-900/50 border-neutral-800 hover:border-cyan-500/30 transition-all duration-300 group">
+                <CardContent className="p-6">
+                  <div className="flex justify-between items-start mb-4">
+                    <h3 className="text-xl font-medium text-cyan-100">UK–India ALxcelerate</h3>
+                    <Globe size={20} className="text-purple-500" />
+                  </div>
+                  <p className="text-neutral-400">
+                    Final-stage participant in a competitive innovation initiative supported by <strong>Infosys</strong> and <strong>The Dialogue (UK)</strong>. Developed an AI-driven Infant Gut Health Analysis solution with an international cross-disciplinary team.
+                  </p>
+                </CardContent>
+              </Card>
 
-        {/* Awards */}
-        <section>
-          <h2 className="text-3xl font-semibold mb-6">Awards & Honors</h2>
-          <ul className="list-disc list-inside text-neutral-300 space-y-2">
-            <li>Runner-Up – Navayugam 24-Hour Hackathon, IEEE TechX Madras 2025</li>
-            <li>Winner – Cyber Carnival Hackathon (2024)</li>
-            <li>Multiple prizes at national-level technical symposia including Infovista, Futura, Neuronex, and Convergence</li>
-            <li>Best CSI Event Organizer (2023) | Event Head (2024–25)</li>
-          </ul>
-        </section>
+              {/* Card 3: Invited Reviewer (Separated) */}
+              <Card className="bg-neutral-900/50 border-neutral-800 hover:border-cyan-500/30 transition-all duration-300 group md:col-span-2">
+                <CardContent className="p-6 flex flex-col md:flex-row gap-6 items-start md:items-center">
+                  <div className="p-3 bg-cyan-500/10 rounded-lg">
+                    <FileCheck size={28} className="text-cyan-400" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-medium text-cyan-100 mb-1">Invited Peer Reviewer</h3>
+                    <p className="text-neutral-300">
+                      <strong>IEEE Contemporary Computing Innovations Conference (CCIC) 2026</strong>
+                    </p>
+                    <p className="text-neutral-500 text-sm mt-1">
+                      Selected to review technical papers and contribute to the evaluation of cutting-edge research in computing and AI.
+                    </p>
+                  </div>
+                </CardContent>
+              </Card>
 
-        {/* Volunteering */}
-        <section>
-          <h2 className="text-3xl font-semibold mb-6">Volunteer & Leadership Experience</h2>
-          <ul className="list-disc list-inside text-neutral-300 space-y-2">
-            <li>Organized rural health camps through NSS demonstrating leadership and community engagement</li>
-            <li>Volunteer – Times of India Green Chennai Tree Plantation Drive</li>
-            <li>Coordinator – Able Aura event supporting differently-abled professionals</li>
-          </ul>
-        </section>
+           </div>
+        </motion.section>
 
-        {/* Footer */}
-        <footer className="pt-10 border-t border-neutral-800 text-neutral-500 text-sm">
-          © 2026 Sathishkumar B · AI & Data Science Portfolio
+        {/* Experience & Projects */}
+        <motion.section variants={itemVariants} className="space-y-8">
+          <h2 className="text-3xl font-semibold border-l-4 border-purple-500 pl-4">Experience & Projects</h2>
+          
+          <div className="grid md:grid-cols-2 gap-8">
+            {/* Experience Column */}
+            <div className="space-y-6">
+              <h3 className="text-xl font-medium text-neutral-300 flex items-center gap-2">
+                <Database size={20} /> Professional Roles
+              </h3>
+              
+              <div className="relative border-l border-neutral-800 ml-3 pl-8 space-y-8 pb-2">
+                <div className="relative">
+                  <span className="absolute -left-[37px] top-1 h-4 w-4 rounded-full bg-cyan-500 border-4 border-neutral-950" />
+                  <h4 className="text-lg font-bold text-white">Artificial Intelligence Intern</h4>
+                  <p className="text-sm text-cyan-400">DigitalTrack Solutions Pvt Ltd | June – July 2025</p>
+                  <p className="text-neutral-400 mt-2 text-sm">
+                    Implemented real-time object detection/face recognition (YOLOv8). Built Flask web apps for live processing with ONNX optimization.
+                  </p>
+                </div>
+
+                <div className="relative">
+                  <span className="absolute -left-[37px] top-1 h-4 w-4 rounded-full bg-neutral-700 border-4 border-neutral-950" />
+                  <h4 className="text-lg font-bold text-white">Data Analyst Intern</h4>
+                  <p className="text-sm text-neutral-400">Monolith Technologies Pvt Ltd | July – Aug 2024</p>
+                  <p className="text-neutral-400 mt-2 text-sm">
+                    Analyzed electric vehicle adoption trends, charging infrastructure growth, and market dynamics using Python.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Projects Column */}
+            <div className="space-y-6">
+              <h3 className="text-xl font-medium text-neutral-300 flex items-center gap-2">
+                <Terminal size={20} /> Featured Projects
+              </h3>
+              
+              <div className="space-y-4">
+                <div className="p-5 rounded-xl bg-white/5 border border-white/5 hover:bg-white/10 transition-colors">
+                  <h4 className="text-lg font-bold text-white mb-1">MedLex</h4>
+                  <p className="text-neutral-400 text-sm">
+                    AI-powered hospital administration and medico-legal management system enabling secure authentication, structured medical data handling, and analytics.
+                  </p>
+                </div>
+                
+                <div className="p-5 rounded-xl bg-white/5 border border-white/5 hover:bg-white/10 transition-colors">
+                  <h4 className="text-lg font-bold text-white mb-1">CareIntelli</h4>
+                  <p className="text-neutral-400 text-sm">
+                    Next-generation AI voice assistant for healthcare that automates patient workflows, prescription digitization, and clinical documentation.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </motion.section>
+
+        {/* Certifications (Updated Links) */}
+        <motion.section variants={itemVariants} className="space-y-8">
+          <h2 className="text-3xl font-semibold border-l-4 border-green-500 pl-4">Certifications</h2>
+          <p className="text-neutral-500 -mt-6">Click on a card to view the official credential.</p>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {certifications.map((cert, index) => (
+              <a 
+                key={index}
+                href={cert.link || "#"}
+                target={cert.link ? "_blank" : "_self"}
+                rel={cert.link ? "noopener noreferrer" : ""}
+                className={`block group h-full ${!cert.link ? "cursor-default" : "cursor-pointer"}`}
+              >
+                <Card className="h-full bg-neutral-900/40 border-neutral-800 group-hover:bg-neutral-800/60 group-hover:border-neutral-700 transition-all duration-300">
+                  <CardContent className="p-5 flex flex-col justify-between h-full">
+                    <div>
+                      <div className="flex justify-between items-start mb-3">
+                        <Award className="text-neutral-500 group-hover:text-cyan-400 transition-colors" size={24} />
+                        {cert.link && <ExternalLink className="text-neutral-600 group-hover:text-white transition-colors" size={16} />}
+                      </div>
+                      <h3 className="font-semibold text-neutral-200 group-hover:text-white leading-tight mb-2">
+                        {cert.name}
+                      </h3>
+                    </div>
+                    <div className="mt-4 pt-4 border-t border-neutral-800 flex justify-between items-center text-xs text-neutral-500">
+                      <span>{cert.issuer}</span>
+                      <span>{cert.year}</span>
+                    </div>
+                  </CardContent>
+                </Card>
+              </a>
+            ))}
+          </div>
+        </motion.section>
+
+        {/* Awards & Volunteering */}
+        <motion.section variants={itemVariants} className="grid md:grid-cols-2 gap-8">
+          <div className="space-y-4">
+             <h3 className="text-xl font-medium text-white">Awards & Honors</h3>
+             <ul className="space-y-3 text-neutral-400 text-sm">
+               <li className="flex gap-3 items-start">
+                 <span className="text-yellow-500 mt-1">★</span>
+                 Runner-Up – Navayugam 24-Hour Hackathon, IEEE TechX Madras 2025
+               </li>
+               <li className="flex gap-3 items-start">
+                 <span className="text-yellow-500 mt-1">★</span>
+                 Winner – Cyber Carnival Hackathon (2024)
+               </li>
+               <li className="flex gap-3 items-start">
+                 <span className="text-yellow-500 mt-1">★</span>
+                 Multiple prizes at national-level technical symposia (Infovista, Futura, Neuronex)
+               </li>
+               <li className="flex gap-3 items-start">
+                 <span className="text-yellow-500 mt-1">★</span>
+                 Best CSI Event Organizer (2023) | Event Head (2024–25)
+               </li>
+             </ul>
+          </div>
+
+          <div className="space-y-4">
+             <h3 className="text-xl font-medium text-white">Volunteering</h3>
+             <ul className="space-y-3 text-neutral-400 text-sm">
+               <li className="flex gap-3 items-start">
+                 <span className="text-green-500 mt-1">♥</span>
+                 Organized rural health camps through NSS
+               </li>
+               <li className="flex gap-3 items-start">
+                 <span className="text-green-500 mt-1">♥</span>
+                 Volunteer – Times of India Green Chennai Tree Plantation Drive
+               </li>
+               <li className="flex gap-3 items-start">
+                 <span className="text-green-500 mt-1">♥</span>
+                 Coordinator – Able Aura event supporting differently-abled professionals
+               </li>
+             </ul>
+          </div>
+        </motion.section>
+
+        <footer className="pt-12 border-t border-neutral-800 text-center text-neutral-600 text-sm">
+          <p>© 2026 Sathishkumar B · AI & Data Science Portfolio</p>
         </footer>
-      </div>
+
+      </motion.div>
     </div>
   );
 }
