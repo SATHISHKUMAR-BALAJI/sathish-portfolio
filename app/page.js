@@ -12,11 +12,11 @@ import {
   Cpu, 
   Globe,
   BookOpen,
-  FileCheck 
+  FileCheck,
+  Mic
 } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 
-// --- Animation Variants ---
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
@@ -30,7 +30,6 @@ const itemVariants = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
 };
 
-// --- Data ---
 const skills = [
   "Python", "C++", "R", "TensorFlow", "PyTorch", "OpenCV", "YOLOv8", 
   "NLP", "Flask", "FastAPI", "React", "PostgreSQL", "Power BI"
@@ -84,7 +83,6 @@ const certifications = [
 export default function Portfolio() {
   return (
     <div className="min-h-screen bg-neutral-950 text-neutral-100 selection:bg-cyan-500/30">
-      {/* Background Gradient Mesh */}
       <div className="fixed inset-0 z-0 pointer-events-none">
         <div className="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-cyan-500/10 rounded-full blur-[120px]" />
         <div className="absolute bottom-[-10%] right-[-10%] w-[500px] h-[500px] bg-indigo-500/10 rounded-full blur-[120px]" />
@@ -97,7 +95,6 @@ export default function Portfolio() {
         animate="visible"
       >
         
-        {/* Hero Section */}
         <motion.section variants={itemVariants} className="space-y-6">
           <div className="inline-block px-3 py-1 text-xs font-medium tracking-wider text-cyan-400 uppercase bg-cyan-400/10 rounded-full border border-cyan-400/20">
             Portfolio 2026
@@ -128,7 +125,6 @@ export default function Portfolio() {
           </div>
         </motion.section>
 
-        {/* About & Stats Grid */}
         <motion.section variants={itemVariants} className="grid md:grid-cols-3 gap-8">
           <div className="md:col-span-2 space-y-4">
             <h2 className="text-2xl font-semibold flex items-center gap-2">
@@ -139,7 +135,6 @@ export default function Portfolio() {
             </p>
           </div>
           
-          {/* Tech Stack Chips */}
           <div className="space-y-4">
              <h2 className="text-2xl font-semibold flex items-center gap-2">
               <Cpu className="text-cyan-400" size={24} /> Technical Skills
@@ -157,53 +152,97 @@ export default function Portfolio() {
           </div>
         </motion.section>
 
-        {/* Research & Innovation (Updated Structure) */}
         <motion.section variants={itemVariants} className="space-y-8">
            <h2 className="text-3xl font-semibold border-l-4 border-cyan-500 pl-4">Research & Innovation</h2>
            <div className="grid md:grid-cols-2 gap-6">
               
-              {/* Card 1: CircuitNAS */}
-              <Card className="bg-neutral-900/50 border-neutral-800 hover:border-cyan-500/30 transition-all duration-300 group">
-                <CardContent className="p-6">
-                  <div className="flex justify-between items-start mb-4">
-                    <h3 className="text-xl font-medium text-cyan-100">CircuitNAS – ICEAI 2025</h3>
-                    <BookOpen size={20} className="text-cyan-500" />
-                  </div>
-                  <div className="text-neutral-400 space-y-4">
-                    <p>
-                      Oral presenter for <strong>"CircuitNAS: Architecture Search for Emergent Mechanistic Interpretability"</strong>. Scheduled for publication in Springer <em>Algorithms for Intelligent Systems</em>.
+              <a 
+                href="https://drive.google.com/file/d/1s5xU5Wk2GM3hWft5YRPUQlsP2gjx-5gz/view?usp=sharing"
+                target="_blank"
+                rel="noreferrer"
+                className="block h-full group"
+              >
+                <Card className="h-full bg-neutral-900/50 border-neutral-800 group-hover:bg-neutral-800/60 group-hover:border-neutral-700 transition-all duration-300">
+                  <CardContent className="p-6">
+                    <div className="flex justify-between items-start mb-4">
+                      <h3 className="text-xl font-medium text-cyan-100 group-hover:text-cyan-400 transition-colors">CircuitNAS – ICEAI 2025</h3>
+                      <BookOpen size={20} className="text-cyan-500" />
+                    </div>
+                    <div className="text-neutral-400 space-y-4">
+                      <p>
+                        Oral presenter for <strong>"CircuitNAS: Architecture Search for Emergent Mechanistic Interpretability"</strong>. Scheduled for publication in Springer <em>Algorithms for Intelligent Systems</em>.
+                      </p>
+                    </div>
+                  </CardContent>
+                </Card>
+              </a>
+
+              <a 
+                href="https://drive.google.com/file/d/1wxr9hSnziCJI6qknJeOtMQJbf6dVMRaO/view?usp=drive_link"
+                target="_blank"
+                rel="noreferrer"
+                className="block h-full group"
+              >
+                <Card className="h-full bg-neutral-900/50 border-neutral-800 group-hover:bg-neutral-800/60 group-hover:border-neutral-700 transition-all duration-300">
+                  <CardContent className="p-6">
+                    <div className="flex justify-between items-start mb-4">
+                      <h3 className="text-xl font-medium text-cyan-100 group-hover:text-cyan-400 transition-colors">Paper Presentation – ICIITCEE 2026</h3>
+                      <Mic size={20} className="text-purple-500" />
+                    </div>
+                    <p className="text-neutral-400">
+                      Presented research paper at the <strong>4th IEEE International Conference on Intelligent and Innovative Technologies in Computing, Electrical and Electronics</strong>.
                     </p>
-                  </div>
-                </CardContent>
-              </Card>
+                    <p className="text-neutral-500 text-sm mt-3">
+                      BNMIT Bengaluru | 22 & 23 January 2026
+                    </p>
+                  </CardContent>
+                </Card>
+              </a>
 
-              {/* Card 2: International Program */}
-              <Card className="bg-neutral-900/50 border-neutral-800 hover:border-cyan-500/30 transition-all duration-300 group">
+              <Card className="bg-neutral-900/50 border-neutral-800 hover:border-cyan-500/30 transition-all duration-300 group md:col-span-2">
                 <CardContent className="p-6">
                   <div className="flex justify-between items-start mb-4">
-                    <h3 className="text-xl font-medium text-cyan-100">UK–India ALxcelerate</h3>
-                    <Globe size={20} className="text-purple-500" />
+                    <div>
+                      <h3 className="text-xl font-medium text-cyan-100 mb-1">UK–India ALXcelerate Program</h3>
+                      <p className="text-cyan-400 text-sm font-medium">Final Stage Participant | Health Group 3</p>
+                    </div>
+                    <Globe size={24} className="text-blue-500" />
                   </div>
-                  <p className="text-neutral-400">
-                    Final-stage participant in a competitive innovation initiative supported by <strong>Infosys</strong> and <strong>The Dialogue (UK)</strong>. Developed an AI-driven Infant Gut Health Analysis solution with an international cross-disciplinary team.
-                  </p>
+                  
+                  <div className="text-neutral-300 space-y-4">
+                    <p className="leading-relaxed">
+                      Selected as a final-stage participant in this prestigious innovation initiative, working under Health Group 3 on an <strong>AI-powered Infant Gut Health Analysis</strong> project. Our solution progressed through competitive reviews and was shortlisted for the <strong>AI Impact Summit of India 2026 (New Delhi)</strong>.
+                    </p>
+                    <div className="bg-neutral-950/50 p-4 rounded-lg border border-neutral-800">
+                      <p className="text-sm text-neutral-400 font-semibold mb-2">Key Contributions:</p>
+                      <ul className="grid md:grid-cols-2 gap-2 text-sm text-neutral-400">
+                        <li className="flex gap-2"><span className="text-cyan-500">▹</span> Developed AI-driven analytical models for gut health assessment.</li>
+                        <li className="flex gap-2"><span className="text-cyan-500">▹</span> Collaborated across clinical, data, and AI perspectives.</li>
+                        <li className="flex gap-2"><span className="text-cyan-500">▹</span> Integrated responsible AI and interpretability principles.</li>
+                        <li className="flex gap-2"><span className="text-cyan-500">▹</span> Presented to policymakers and industry leaders at the Summit.</li>
+                      </ul>
+                    </div>
+                  </div>
                 </CardContent>
               </Card>
 
-              {/* Card 3: Invited Reviewer (Separated) */}
               <Card className="bg-neutral-900/50 border-neutral-800 hover:border-cyan-500/30 transition-all duration-300 group md:col-span-2">
                 <CardContent className="p-6 flex flex-col md:flex-row gap-6 items-start md:items-center">
                   <div className="p-3 bg-cyan-500/10 rounded-lg">
                     <FileCheck size={28} className="text-cyan-400" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-medium text-cyan-100 mb-1">Invited Peer Reviewer</h3>
-                    <p className="text-neutral-300">
-                      <strong>IEEE Contemporary Computing Innovations Conference (CCIC) 2026</strong>
-                    </p>
-                    <p className="text-neutral-500 text-sm mt-1">
-                      Selected to review technical papers and contribute to the evaluation of cutting-edge research in computing and AI.
-                    </p>
+                    <h3 className="text-xl font-medium text-cyan-100 mb-2">Invited Peer Reviewer</h3>
+                    <div className="space-y-2 text-neutral-300">
+                      <p>
+                        <span className="text-neutral-400">Completed reviews for 2 IEEE papers:</span><br/>
+                        <strong>IEEE Contemporary Computing Innovations Conference (CCIC) 2026</strong>
+                      </p>
+                      <p>
+                        <span className="text-neutral-400">Completed reviews for 7 IEEE papers:</span><br/>
+                        <strong>IEEE International Conference on AI Engineering and Innovation</strong>
+                      </p>
+                    </div>
                   </div>
                 </CardContent>
               </Card>
@@ -211,12 +250,10 @@ export default function Portfolio() {
            </div>
         </motion.section>
 
-        {/* Experience & Projects */}
         <motion.section variants={itemVariants} className="space-y-8">
           <h2 className="text-3xl font-semibold border-l-4 border-purple-500 pl-4">Experience & Projects</h2>
           
           <div className="grid md:grid-cols-2 gap-8">
-            {/* Experience Column */}
             <div className="space-y-6">
               <h3 className="text-xl font-medium text-neutral-300 flex items-center gap-2">
                 <Database size={20} /> Professional Roles
@@ -243,7 +280,6 @@ export default function Portfolio() {
               </div>
             </div>
 
-            {/* Projects Column */}
             <div className="space-y-6">
               <h3 className="text-xl font-medium text-neutral-300 flex items-center gap-2">
                 <Terminal size={20} /> Featured Projects
@@ -268,7 +304,6 @@ export default function Portfolio() {
           </div>
         </motion.section>
 
-        {/* Certifications (Updated Links) */}
         <motion.section variants={itemVariants} className="space-y-8">
           <h2 className="text-3xl font-semibold border-l-4 border-green-500 pl-4">Certifications</h2>
           <p className="text-neutral-500 -mt-6">Click on a card to view the official credential.</p>
@@ -304,7 +339,6 @@ export default function Portfolio() {
           </div>
         </motion.section>
 
-        {/* Awards & Volunteering */}
         <motion.section variants={itemVariants} className="grid md:grid-cols-2 gap-8">
           <div className="space-y-4">
              <h3 className="text-xl font-medium text-white">Awards & Honors</h3>
